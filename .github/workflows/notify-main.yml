@@ -1,0 +1,16 @@
+name: Notify main repo to rebuild
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger main repo to rebuild
+        run: |
+          curl -X POST https://api.github.com/repos/wasitac/wasitac.github.io/dispatches \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.MAIN_REPO_TOKEN }}" \
+            -d '{"event_type":"submodule-updated"}'
