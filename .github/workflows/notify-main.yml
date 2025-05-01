@@ -1,4 +1,4 @@
-name: Notify main repo to rebuild
+name: "Notify main repo to rebuild"
 
 on:
   push:
